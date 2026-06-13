@@ -1,0 +1,29 @@
+[project]
+name = "prediction-markets"
+version = "0.1.0"
+description = "Prediction-market analytics on real Polymarket data: implied probabilities, cross-outcome (neg-risk) consistency / arbitrage scanning, spreads and the favorite-longshot price distribution."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Tejas Pandya", email = "tbp8777@nyu.edu" }]
+license = { text = "MIT" }
+keywords = ["prediction-markets", "polymarket", "arbitrage", "probability", "quant"]
+
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.1",
+    "requests>=2.31",   # Polymarket Gamma API
+    "matplotlib>=3.8",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.0", "ruff>=0.5"]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]

@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# uv / virtualenv
+.venv/
+
+# OS
+.DS_Store
+
+# Live API pull is cached but not tracked (refetched on demand).
+data/markets.json
+
+# reports/figures tracked (shown in README).
