@@ -25,6 +25,31 @@ Neg-risk arbitrage candidates (outcome prices off 1):
 - **Event consistency / arbitrage** (`analysis.event_consistency`) — the signal above.
 - **Spreads & liquidity** — where the tradeable, liquid markets actually are.
 
+## The math
+
+For a neg-risk event with mutually exclusive, exhaustive outcomes, no-arbitrage
+requires the YES prices to behave like a probability measure:
+
+$$\sum_i p_i = 1$$
+
+If $\sum_i \text{ask}_i < 1$, buying one YES of everything costs less than the \$1
+the winning outcome must pay — a static long arbitrage of $1 - \sum \text{ask}_i$
+gross. If $\sum_i \text{bid}_i > 1$, selling the basket locks in the overround
+$\sum \text{bid}_i - 1$ the same way. Both are riskless at expiry regardless of the
+outcome, which is what distinguishes them from a directional bet; the scanner ranks
+events by $|\,1 - \sum p_i\,|$ and available volume, and the report nets estimated
+fees before calling anything a candidate.
+
+The favorite-longshot distribution view comes from the same identity: with prices as
+implied probabilities, systematic overpricing of low-probability outcomes shows up
+as mass at the extremes of the $p$ histogram — the classic bias documented in
+betting and options markets alike.
+
+## References
+
+- Wolfers, J. & Zitzewitz, E. (2004), *Prediction Markets*, Journal of Economic Perspectives 18(2) — prices as probabilities and their calibration.
+- Snowberg, E. & Wolfers, J. (2010), *Explaining the Favorite-Longshot Bias*, JPE 118(4).
+
 ## Run
 
 ```bash
