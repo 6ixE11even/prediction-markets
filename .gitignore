@@ -14,3 +14,6 @@ __pycache__/
 data/markets.json
 
 # reports/figures tracked (shown in README).
+*.pyc
+*.egg-info/
+build/
